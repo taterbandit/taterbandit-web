@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tater Awesome Website for the Bandits</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: Orbitron, sans-serif;
+    background: #000;
+    color: white;
+}
+
+/* BACKGROUND */
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top, #1a0000, #000);
+    z-index: -1;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    background: #0b0b0b;
+    padding: 20px;
+    border-right: 1px solid #222;
+}
+
+.pfp {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 2px solid #ff2e2e;
+    box-shadow: 0 0 15px red;
+}
+
+.sidebar h2 {
+    color: #ff2e2e;
+}
+
+.sidebar a {
+    display: block;
+    margin: 12px 0;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #ff2e2e;
+}
+
+/* MAIN */
+.main {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(45deg, #111, #1a0000);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.hero h1 {
+    color: #ff2e2e;
+    font-size: 26px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 18px;
+    background: #ff2e2e;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* XP BAR */
+.xp {
+    width: 100%;
+    height: 10px;
+    background: #222;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+
+.xp-fill {
+    width: 70%;
+    height: 10px;
+    background: #ff2e2e;
+    border-radius: 20px;
+}
+
+/* VIDEOS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card {
+    background: #111;
+    padding: 10px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #ff2e2e;
+}
+
+iframe {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+}
+
+/* FEED */
+.post {
+    background: #111;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid #ff2e2e;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <img src="assets/pfp.png" class="pfp" alt="PFP">
+
+    <h2>Tater</h2>
+
+    <a href="#home">Home</a>
+    <a href="#videos">Videos</a>
+    <a href="#feed">Feed</a>
+
+    <a href="https://www.youtube.com/@Taterbandit" target="_blank">▶ YouTube</a>
+
+    <a href="https://www.twitch.tv/thepotatobandit" target="_blank">🎥 Twitch Live</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<section class="hero" id="home">
+    <h1>🔥 TATER AWESOME WEBSITE FOR THE BANDITS 🔥</h1>
+    <p>Creator Hub Online</p>
+
+    <div class="xp">
+        <div class="xp-fill"></div>
+    </div>
+
+    <a class="btn" href="https://www.youtube.com/@Taterbandit" target="_blank">
+        ▶ Open Channel
+    </a>
+
+    <h2>🎬 Featured Video</h2>
+    <div id="featured"></div>
+</section>
+
+<section id="videos">
+    <h2>🔥 Latest Videos</h2>
+    <div class="grid" id="grid"></div>
+</section>
+
+<section id="feed">
+    <h2>💬 Live Feed</h2>
+
+    <div class="post">🔥 New content detected</div>
+    <div class="post">🎮 Community activity rising</div>
+    <div class="post">🚀 Channel growing stronger</div>
+</section>
+
+</div>
+
+<script>
+
+// 🔥 YouTube Auto Feed (no API key)
+fetch("https://www.youtube.com/feeds/videos.xml?user=Taterbandit")
+.then(r => r.text())
+.then(str => {
+
+    const xml = new DOMParser().parseFromString(str, "text/xml");
+    const entries = xml.querySelectorAll("entry");
+
+    const grid = document.getElementById("grid");
+
+    entries.forEach((e, i) => {
+
+        const link = e.querySelector("link").getAttribute("href");
+        const id = link.split("v=")[1];
+
+        if(i === 0){
+            document.getElementById("featured").innerHTML =
+            `<iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>`;
+        }
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>
+        `;
+
+        grid.appendChild(card);
+    });
+});
+
+</script>
+
+</body>
+</html>

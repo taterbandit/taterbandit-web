@@ -3,143 +3,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taterbandit Action Hub</title>
+
+<title>Taters Awesome Site of Bandits</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a1a2e, #0f0f0f);
+    background: #000;
     color: white;
     overflow-x: hidden;
 }
 
-header {
-    padding: 20px;
-    text-align: center;
+/* =========================
+   TOP BAR / LOGO
+========================= */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
     background: #111;
-    border-bottom: 2px solid #ff2e2e;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-bottom: 1px solid #222;
+    z-index: 10;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ff2e2e;
+    box-shadow: 0 0 10px #ff2e2e;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: bold;
     color: #ff2e2e;
-    letter-spacing: 2px;
 }
 
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    width: 240px;
+    height: calc(100vh - 60px);
+    background: #111;
+    padding: 15px;
+    border-right: 1px solid #222;
+}
+
+.sidebar h2 {
+    color: #ff2e2e;
+}
+
+/* =========================
+   MAIN
+========================= */
+.main {
+    margin-left: 260px;
+    padding: 80px 20px 20px;
+}
+
+/* HERO */
 .hero {
-    text-align: center;
-    padding: 80px 20px;
-    animation: fadeIn 2s ease-in-out;
+    background: linear-gradient(45deg, #111, #1a0000);
+    padding: 20px;
+    border-radius: 12px;
 }
 
-.hero h2 {
-    font-size: 2.2em;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    max-width: 700px;
-    margin: auto;
-    color: #cccccc;
-    font-size: 1.1em;
-}
-
-.button {
+/* BUTTONS */
+.btn {
     display: inline-block;
-    margin-top: 25px;
-    padding: 14px 28px;
+    padding: 10px 15px;
     background: #ff2e2e;
     color: white;
     text-decoration: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+/* TWITCH BUTTON */
+.twitch-btn {
+    background: #9146ff;
+}
+
+/* TWITCH STATUS */
+#twitchStatus {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    background: #333;
+    color: #aaa;
+}
+
+/* =========================
+   LATEST VIDEO
+========================= */
+#latestCard {
+    margin-top: 15px;
+    background: #111;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#latestCard:hover {
+    box-shadow: 0 0 20px #ff2e2e;
+    transform: scale(1.02);
+}
+
+#latestCard img {
+    width: 100%;
     border-radius: 10px;
-    transition: 0.3s;
-    font-weight: bold;
 }
 
-.button:hover {
-    transform: scale(1.1);
-    background: #ff0000;
-}
-
+/* =========================
+   VIDEO GRID
+========================= */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 40px;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .card {
-    background: #1c1c2c;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(255,0,0,0.2);
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
+    background: #222;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 iframe {
     width: 100%;
-    height: 220px;
+    height: 180px;
     border-radius: 10px;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    color: #777;
-    margin-top: 30px;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(30px);}
-    to {opacity: 1; transform: translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>🔥 TATERBANDIT HUB 🔥</h1>
-</header>
+<!-- TOP HEADER -->
+<div class="topbar">
+    <div class="logo-wrap">
+        <img src="assets/pfp.png" class="logo-img">
+        <div class="logo-text">Taters Awesome Site of Bandits</div>
+    </div>
+</div>
 
-<section class="hero">
-    <h2>Action-Packed YouTube Experience</h2>
-    <p>Welcome to the official fan-style hub for Taterbandit. Watch the latest uploads, highlights, and explosive content all in one place.</p>
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>🔥 Bandit Hub</h2>
+    <p>Final Boss Site</p>
+</div>
 
-    <a class="button" href="https://www.youtube.com/@Taterbandit" target="_blank">
-        ▶ Watch on YouTube
+<!-- MAIN -->
+<div class="main">
+
+<div class="hero">
+    <h1>👑 FINAL BOSS MODE</h1>
+    <p>Creator Hub Online</p>
+
+    <a class="btn" id="latestBtn" target="_blank">▶ Latest Video</a>
+
+    <a class="btn twitch-btn" href="https://www.twitch.tv/thepotatobandit" target="_blank">
+        🎮 Watch on Twitch
     </a>
-</section>
 
-<section class="grid">
+    <div id="twitchStatus">Checking Twitch...</div>
+</div>
 
-    <div class="card">
-        <h3>📺 Latest Uploads</h3>
-        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=Taterbandit" allowfullscreen></iframe>
-    </div>
+<h2>🎬 Latest Upload</h2>
 
-    <div class="card">
-        <h3>⚡ Highlights</h3>
-        <p>Fast-paced clips and top moments from the channel’s best content.</p>
-    </div>
+<div id="latestCard">
+    <p id="latestTitle">Loading latest video...</p>
+    <img id="latestThumb" style="display:none;">
+</div>
 
-    <div class="card">
-        <h3>🚀 Subscribe</h3>
-        <p>Never miss new uploads, updates, and action drops.</p>
-    </div>
+<h2>📺 More Videos</h2>
+<div class="grid" id="grid"></div>
 
-</section>
+</div>
 
-<footer>
-    © 2026 Taterbandit Fan Hub | Built with 💥 energy
-</footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+const channel = "Taterbandit";
+const twitchUser = "thepotatobandit";
+
+let latestURL = "";
+
+/* ======================
+   TWITCH STATUS
+====================== */
+function checkTwitchLive() {
+    fetch(`https://decapi.me/twitch/stream/${twitchUser}`)
+    .then(res => res.text())
+    .then(text => {
+
+        const status = document.getElementById("twitchStatus");
+
+        if(text.includes("offline")) {
+            status.innerText = "⚫ OFFLINE";
+            status.style.background = "#222";
+            status.style.color = "#aaa";
+            status.style.boxShadow = "none";
+        } else {
+            status.innerText = "🔴 LIVE ON TWITCH";
+            status.style.background = "#9146ff";
+            status.style.color = "white";
+            status.style.boxShadow = "0 0 10px #9146ff";
+        }
+
+    })
+    .catch(() => {
+        document.getElementById("twitchStatus").innerText = "⚠️ Status unavailable";
+    });
+}
+
+checkTwitchLive();
+setInterval(checkTwitchLive, 60000);
+
+/* ======================
+   LATEST VIDEO
+====================== */
+
+const card = document.getElementById("latestCard");
+const thumb = document.getElementById("latestThumb");
+const title = document.getElementById("latestTitle");
+const btn = document.getElementById("latestBtn");
+
+card.addEventListener("click", () => {
+    if(latestURL) window.open(latestURL, "_blank");
+});
+
+fetch(`https://www.youtube.com/feeds/videos.xml?user=${channel}`)
+.then(res => res.text())
+.then(str => {
+
+    const xml = new DOMParser().parseFromString(str, "text/xml");
+    const entry = xml.querySelector("entry");
+
+    const link = entry.querySelector("link").getAttribute("href");
+    const videoId = link.split("v=")[1];
+
+    latestURL = `https://www.youtube.com/watch?v=${videoId}`;
+
+    title.innerText = entry.querySelector("title").textContent;
+
+    thumb.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    thumb.style.display = "block";
+
+    btn.href = latestURL;
+
+});
+
+/* ======================
+   VIDEO GRID
+====================== */
+
+fetch(`https://www.youtube.com/feeds/videos.xml?user=${channel}`)
+.then(res => res.text())
+.then(str => {
+
+    const xml = new DOMParser().parseFromString(str, "text/xml");
+    const entries = xml.querySelectorAll("entry");
+
+    const grid = document.getElementById("grid");
+
+    entries.forEach((e, i) => {
+
+        if(i === 0) return;
+
+        const link = e.querySelector("link").getAttribute("href");
+        const id = link.split("v=")[1];
+
+        const div = document.createElement("div");
+        div.className = "card";
+
+        div.innerHTML = `
+            <iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>
+        `;
+
+        grid.appendChild(div);
+    });
+
+});
+
+});
+</script>
 
 </body>
 </html>
